@@ -62,6 +62,15 @@ pub fn IxDyn(ix: &[Ix]) -> IxDyn
     Dim(ix)
 }
 
+impl<const D: usize> Dim<[Ix; D]>
+{
+    /// Create a static-dimensional index, repeating a single index value
+    #[inline(always)]
+    pub fn repeating(i: Ix) -> Self {
+        Dim::new([i; D])
+    }
+}
+
 /// zero-dimensionial
 pub type Ix0 = Dim<[Ix; 0]>;
 /// one-dimensional
